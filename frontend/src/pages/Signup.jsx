@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./Signup.css"; // Add a new CSS file for custom styles
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -12,12 +12,10 @@ const Signup = () => {
     gender: "",
   });
 
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  
   const validatePassword = (password) => {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return passwordRegex.test(password);
@@ -31,7 +29,6 @@ const Signup = () => {
       return;
     }
 
-
     if (!validatePassword(formData.password)) {
       alert(
         "Password must be at least 8 characters long, contain at least 1 uppercase letter, 1 number, and 1 special character."
@@ -41,14 +38,12 @@ const Signup = () => {
 
     console.log("Form Submitted:", formData);
     alert("Signup Successful!");
-    
   };
 
   return (
-    <div className="container mt-5" style={{ width: "600px" }}>
-      <h2 className="text-center">Sign Up</h2>
-      <form onSubmit={handleSubmit} className="p-4 border rounded shadow">
-       
+    <div className="container mt-5 signup-container">
+      <h2 className="text-center mb-4">Sign Up</h2>
+      <form onSubmit={handleSubmit} className="p-4 border rounded shadow signup-form">
         <div className="mb-3">
           <label className="form-label">Full Name</label>
           <input type="text" name="name" className="form-control" required onChange={handleChange} />
@@ -59,19 +54,16 @@ const Signup = () => {
           <input type="email" name="email" className="form-control" required onChange={handleChange} />
         </div>
 
-    
         <div className="mb-3">
           <label className="form-label">Contact Number</label>
           <input type="tel" name="contact" className="form-control" required onChange={handleChange} />
         </div>
 
-       
         <div className="mb-3">
           <label className="form-label">Username</label>
           <input type="text" name="username" className="form-control" required onChange={handleChange} />
         </div>
 
-    
         <div className="mb-3">
           <label className="form-label">Password</label>
           <input
@@ -89,7 +81,7 @@ const Signup = () => {
           <input type="password" name="confirmPassword" className="form-control" required onChange={handleChange} />
         </div>
 
-        <button type="submit"  to="/signin" className="btn btn-dark w-100">
+        <button type="submit" className="btn btn-dark w-100">
           Sign Up
         </button>
       </form>

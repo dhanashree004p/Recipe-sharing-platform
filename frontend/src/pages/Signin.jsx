@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import "./Signin.css"; // Add a new CSS file for custom styles
 
 const Signin = () => {
   const [formData, setFormData] = useState({
-    emailOrUsername: "",
+    username: "",
     password: "",
   });
 
@@ -12,23 +13,18 @@ const Signin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Sign In Data:", formData);
-    alert("Sign In Successful!");
+
+    console.log("Form Submitted:", formData);
+    alert("Signin Successful!");
   };
 
   return (
-    <div className="container mt-5" style={{ width: "400px" }}>
-      <h2 className="text-center">Sign In</h2>
-      <form onSubmit={handleSubmit} className="p-4 border rounded shadow">
+    <div className="container mt-5 signin-container">
+      <h2 className="text-center mb-4">Sign In</h2>
+      <form onSubmit={handleSubmit} className="p-4 border rounded shadow signin-form">
         <div className="mb-3">
-          <label className="form-label">Email or Username</label>
-          <input
-            type="text"
-            name="emailOrUsername"
-            className="form-control"
-            required
-            onChange={handleChange}
-          />
+          <label className="form-label">Username</label>
+          <input type="text" name="username" className="form-control" required onChange={handleChange} />
         </div>
 
         <div className="mb-3">
